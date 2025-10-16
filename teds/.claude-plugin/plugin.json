@@ -14,10 +14,7 @@
     "knowledge-management"
   ],
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/eternnoir/claude-tool"
-  },
+  "repository": "https://github.com/eternnoir/claude-tool",
   "homepage": "https://github.com/eternnoir/claude-tool#readme",
   "bugs": {
     "url": "https://github.com/eternnoir/claude-tool/issues"
