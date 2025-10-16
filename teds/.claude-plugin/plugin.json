@@ -15,8 +15,5 @@
   ],
   "license": "MIT",
   "repository": "https://github.com/eternnoir/claude-tool",
-  "homepage": "https://github.com/eternnoir/claude-tool#readme",
-  "bugs": {
-    "url": "https://github.com/eternnoir/claude-tool/issues"
-  }
+  "homepage": "https://github.com/eternnoir/claude-tool#readme"
 }
