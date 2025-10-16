@@ -1,0 +1,28 @@
+{
+  "name": "claude-tools",
+  "version": "1.0.0",
+  "description": "Collection of Claude Code plugins and tools by Frank Wang",
+  "owner": {
+    "name": "eternnoir",
+    "email": "eternnoir@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eternnoir/claude-tool"
+  },
+  "homepage": "https://github.com/eternnoir/claude-tool#readme",
+  "plugins": [
+    {
+      "name": "teds",
+      "source": "./teds",
+      "description": "Task Execution Documentation System - Comprehensive documentation for complex, multi-session tasks",
+      "version": "1.0.0",
+      "keywords": [
+        "task-management",
+        "documentation",
+        "long-term-tasks",
+        "project-tracking"
+      ]
+    }
+  ]
+}
