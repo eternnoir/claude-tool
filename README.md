@@ -2,9 +2,6 @@
 
 Collection of Claude Code plugins and tools by Frank Wang.
 
-**Version**: 1.0.0
-**Repository**: https://github.com/eternnoir/claude-tool
-
 ---
 
 ## Installation
@@ -31,9 +28,6 @@ claude
 ## Available Plugins
 
 ### TEDS (Task Execution Documentation System)
-
-**Version**: 1.0.0
-**Status**: Stable
 
 Comprehensive documentation system for complex, multi-session tasks.
 
@@ -136,29 +130,3 @@ Contributions welcome! Please:
 ## License
 
 MIT License - See individual plugin directories for specific licenses.
-
----
-
-## Author
-
-**eternnoir**
-Email: eternnoir@gmail.com
-GitHub: [@eternnoir](https://github.com/eternnoir)
-
----
-
-## Version History
-
-### v1.0.0 (2025-10-16)
-- Initial marketplace release
-- Added TEDS Plugin v1.0.0
-
----
-
-**Ready to get started?**
-
-```bash
-/plugin marketplace add eternnoir/claude-tool
-/plugin install teds@claude-tool
-/teds-init
-```
