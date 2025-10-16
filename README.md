@@ -1,6 +1,6 @@
 # Claude Tools
 
-Collection of Claude Code plugins and tools by Frank Wang.
+Collection of Claude Code plugins and tools.
 
 ---
 
