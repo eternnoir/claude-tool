@@ -50,6 +50,92 @@ Comprehensive documentation system for complex, multi-session tasks.
 
 ---
 
+## Why TEDS?
+
+### Problems It Solves
+
+**1. Context Continuity Loss**
+
+When working on complex multi-day projects with Claude:
+- Each conversation is a new session; previous context is lost
+- You need to re-explain "what we're doing" and "where we left off"
+- Claude cannot remember previous work details and decisions
+
+**2. Knowledge Evaporation**
+
+During problem-solving, you learn valuable insights:
+- API gotchas and limitations
+- Best practices for certain patterns
+- Discoveries made during debugging
+
+But this valuable knowledge often **vanishes when the conversation ends**, preventing accumulation and reuse.
+
+**3. Progress Opacity**
+
+In complex tasks, it's hard to answer:
+- "Where am I now?"
+- "How much work remains?"
+- "Which steps are completed?"
+- "Where did I get blocked last time?"
+
+**4. Work Continuity Breaks**
+
+Multi-day work often encounters:
+- Forgetting previous thought processes
+- Repeating the same mistakes
+- Not remembering previously attempted solutions
+- Lack of complete decision records
+
+### TEDS Solutions
+
+**1. Complete Context Preservation**
+- **execution_log.md**: Records every operation and result
+- **status.yaml**: Tracks current phase and progress
+- **context.md**: Preserves background information and constraints
+- Enables full context loading when resuming work
+
+**2. Systematic Knowledge Accumulation**
+- **knowledge_base.md**: Automatically captures all discoveries and learnings
+- Records solutions, best practices, and pitfall warnings
+- Builds searchable, reusable knowledge base
+- Provides reference for similar future tasks
+
+**3. Transparent Progress Management**
+- **plan.md**: Defines phases, milestones, success criteria
+- **status.yaml**: Real-time updates of progress percentage and current phase
+- **Checkpoint mechanism**: Automatically creates checkpoints every 30+ minutes
+- Visualize task progress at any time
+
+**4. Mandatory Documentation Protocol**
+
+TEDS's core innovation is the **Mandatory Logging Protocol**:
+
+```
+After each tool call, immediately record:
+✓ What operation was performed
+✓ What the result was
+✓ What was learned
+
+This isn't based on developer discipline, but enforced through
+the agent's self-check protocol.
+```
+
+### Core Value
+
+TEDS essentially brings **scientific lab notebook** practices into AI-assisted programming:
+
+> "If it isn't documented, it didn't happen"
+
+It ensures all work processes, decisions, and learnings are systematically preserved, enabling future you (or other developers) to:
+1. Understand why decisions were made
+2. Reuse solutions
+3. Avoid repeating mistakes
+4. Build organizational knowledge assets
+
+This is particularly valuable for building long-term knowledge management systems (like AkashicRecords).
+
+---
+
 ## Marketplace Structure
 
 ```

@@ -23,6 +23,151 @@ TEDS provides a systematic approach to managing long-term tasks that span multip
 
 ---
 
+## Why TEDS?
+
+### Problems It Solves
+
+**1. Context Continuity Loss**
+
+When working on complex multi-day projects with Claude:
+- Each conversation is a new session; previous context is lost
+- You need to re-explain "what we're doing" and "where we left off"
+- Claude cannot remember previous work details and decisions
+- Picking up where you left off becomes a guessing game
+
+**2. Knowledge Evaporation**
+
+During problem-solving, you accumulate valuable insights:
+- API gotchas and limitations ("Google OAuth requires exact redirect URI match")
+- Best practices for certain patterns (token refresh strategies)
+- Debugging discoveries (why certain approaches failed)
+- Architecture decisions and trade-offs
+
+But this valuable knowledge often **vanishes when the conversation ends**, preventing accumulation and reuse. You end up re-learning the same lessons repeatedly.
+
+**3. Progress Opacity**
+
+In complex tasks spanning multiple sessions, it's hard to answer:
+- "Where am I now in the overall plan?"
+- "How much work remains?"
+- "Which steps are completed vs. in-progress?"
+- "Where did I get blocked last time?"
+- "What was I planning to do next?"
+
+Without clear visibility, you waste time reconstructing the current state instead of making progress.
+
+**4. Work Continuity Breaks**
+
+Multi-day work often encounters:
+- Forgetting previous thought processes and reasoning
+- Repeating the same mistakes because failures weren't documented
+- Not remembering previously attempted solutions
+- Lack of complete decision records (why choice A over choice B?)
+- Lost momentum between sessions
+
+**5. Incomplete Audit Trail**
+
+For significant changes (migrations, refactors, major features):
+- No record of what actually happened
+- Can't reconstruct decision timeline
+- Difficult to onboard others to the work
+- Hard to debug issues months later ("why did we do it this way?")
+
+### TEDS Solutions
+
+**1. Complete Context Preservation**
+- **execution_log.md**: Records every operation and result with timestamps
+- **status.yaml**: Tracks current phase, progress, and next action
+- **context.md**: Preserves background information and constraints
+- **plan.md**: Maintains the overall strategy and success criteria
+- Enables full context loading when resuming work after days or weeks
+
+**2. Systematic Knowledge Accumulation**
+- **knowledge_base.md**: Automatically captures all discoveries and learnings
+- Organized sections: Key Learnings, Solutions, References, Best Practices, Gotchas
+- Records not just what worked, but what didn't and why
+- Builds searchable, reusable knowledge base
+- Provides reference for similar future tasks
+- Creates organizational knowledge assets over time
+
+**3. Transparent Progress Management**
+- **plan.md**: Defines phases, milestones, success criteria upfront
+- **status.yaml**: Real-time updates of progress percentage and current phase
+- **Checkpoint mechanism**: Automatically creates checkpoints every 30+ minutes
+- **Execution log**: Complete history of what's been done
+- Visualize task progress at any time with `/teds-status`
+
+**4. Mandatory Documentation Protocol**
+
+TEDS's core innovation is the **Mandatory Logging Protocol**:
+
+```
+After EVERY action (Read/Write/Edit/Bash/any tool use), immediately:
+
+1. Append to execution_log.md:
+   - What operation was performed
+   - What the result was
+   - Status (success/failed/partial)
+
+2. Update status.yaml when state changes
+
+3. Add to knowledge_base.md when discovering insights
+
+Self-Check Protocol:
+Before responding to user:
+- [ ] Did I log this action to execution_log.md?
+- [ ] Did I update status.yaml if state changed?
+- [ ] Is there new knowledge for knowledge_base.md?
+
+If ANY checkbox is unchecked, DO NOT respond yet.
+```
+
+This isn't based on developer discipline or manual reminders, but **enforced through the agent's self-check protocol**. The agent literally won't respond until logging is complete.
+
+**5. Complete Audit Trail**
+
+Every task maintains a complete, timestamped record:
+- What was planned (plan.md)
+- What actually happened (execution_log.md)
+- What was learned (knowledge_base.md)
+- Why it was done (context.md)
+- Current state at any point (status.yaml)
+
+This creates accountability and traceability for significant work.
+
+### Core Value
+
+TEDS essentially brings **scientific lab notebook** practices into AI-assisted programming:
+
+> "If it isn't documented, it didn't happen"
+
+It ensures all work processes, decisions, and learnings are systematically preserved, enabling future you (or other developers) to:
+1. **Understand why**: Complete decision history and reasoning
+2. **Reuse solutions**: Searchable knowledge base of what worked
+3. **Avoid repeating mistakes**: Documented failures and gotchas
+4. **Resume seamlessly**: Full context restoration across sessions
+5. **Build knowledge assets**: Organizational learning that compounds over time
+
+### When to Use TEDS
+
+✅ **Use TEDS for**:
+- Multi-session projects (>3 hours across multiple days)
+- Complex refactoring or migrations
+- Significant feature implementations
+- Exploratory work with learnings
+- Complex bug investigations
+- Work that needs complete audit trail
+
+❌ **Skip TEDS for**:
+- Simple bug fixes (< 1 hour)
+- Single-file edits
+- Routine maintenance
+- One-off scripts
+
+**Rule of thumb**: If you'll thank yourself next week for having a complete record, use TEDS.
+
+---
+
 ## Plugin Structure
 
 ```
