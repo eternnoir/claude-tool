@@ -1,6 +1,6 @@
 # Claude Tools
 
-Collection of Claude Code plugins and tools.
+Collection of Claude Code plugins and tools for enhancing AI-assisted workflows.
 
 ---
 
@@ -18,6 +18,7 @@ claude
 ```bash
 # Install specific plugin
 /plugin install teds@claude-tools
+/plugin install akashicrecords@claude-tools
 
 # Or browse and install interactively
 /plugin
@@ -29,15 +30,13 @@ claude
 
 ### TEDS (Task Execution Documentation System)
 
-Comprehensive documentation system for complex, multi-session tasks.
+Comprehensive documentation system for complex, multi-session tasks with mandatory logging and knowledge accumulation.
 
-**Features**:
+**Key Features**:
 - 📝 Mandatory logging of every action
 - 🔄 Checkpoint & resume capability
 - 🧠 Knowledge base accumulation
 - 📊 Progress tracking and status reporting
-- 🎯 Structured phase management
-- 📦 Task archival for future reference
 
 **Quick Start**:
 ```bash
@@ -46,29 +45,19 @@ Comprehensive documentation system for complex, multi-session tasks.
 /teds-start my-task "Task description"
 ```
 
-**Documentation**: See [teds/README.md](./teds/README.md)
+**Documentation**: [teds/README.md](./teds/README.md)
 
 ---
 
 ### AkashicRecords
 
-**The first AI-native knowledge management system** - designed for AI agents to autonomously understand, organize, and maintain knowledge bases through self-describing directories.
+AI-native knowledge management system where AI reads your organizational rules (RULE.md) and autonomously manages your knowledge base.
 
-**Why AI-Native?**
-
-Traditional tools expect humans to organize files. AkashicRecords lets AI read your organizational rules and execute complex workflows autonomously:
-
-- 📖 **AI reads RULE.md** to understand "what is this directory for?"
-- 🤖 **AI executes workflows** defined in natural language (e.g., "when URL detected, fetch and archive")
-- 🎯 **AI classifies content** by matching topics to directory purposes
-- ✅ **Human confirms decisions** - AI recommends, you approve
-
-**Features**:
+**Key Features**:
 - 🎯 5 generic Skills (add, update, delete, move, search)
-- 📋 RULE.md-driven execution (business logic from YOUR rules, not hardcoded)
-- 🧠 Smart content classification with user confirmation
-- ✅ Self-governing directories with automatic README.md maintenance
-- 🔧 Universal compatibility - no assumptions about directory structure
+- 📋 RULE.md-driven workflows (your rules, not hardcoded logic)
+- 🧠 Smart content classification with confirmation
+- ✅ Self-governing directories with automatic maintenance
 
 **Quick Start**:
 ```bash
@@ -77,13 +66,13 @@ Traditional tools expect humans to organize files. AkashicRecords lets AI read y
 "Save this note about AI"        # AI recommends location, you confirm
 ```
 
-**Example**: Your `ReadLater/RULE.md` says "fetch URLs and convert to markdown" → AI reads this → When you share a URL, AI automatically fetches, converts, and archives per your rules.
-
-**Documentation**: See [akashicrecords/README.md](./akashicrecords/README.md)
+**Documentation**: [akashicrecords/README.md](./akashicrecords/README.md)
 
 ---
 
-## Why TEDS?
+## Why These Tools?
+
+### Why TEDS?
 
 ### Problems It Solves
 
@@ -166,6 +155,145 @@ It ensures all work processes, decisions, and learnings are systematically prese
 4. Build organizational knowledge assets
 
 This is particularly valuable for building long-term knowledge management systems (like AkashicRecords).
+
+---
+
+### Why AkashicRecords?
+
+#### Problems It Solves
+
+**1. Manual Knowledge Organization Overhead**
+
+Traditional knowledge management requires constant human decisions:
+- "Where should this file go?"
+- "What should I name it?"
+- "How should I format it?"
+- "Which category does this belong to?"
+
+This cognitive overhead accumulates, making knowledge capture feel like a chore rather than a natural process.
+
+**2. Repetitive Workflow Execution**
+
+Common workflows must be executed manually every time:
+- Saving web articles: fetch URL → convert to markdown → create directory → save with metadata
+- Daily logs: check date → parse to directory path → create structure → apply template
+- Research notes: add frontmatter → categorize → update index → tag properly
+
+Each workflow requires multiple steps, repeated identically for each new item.
+
+**3. Inflexible Tool Assumptions**
+
+Most knowledge management tools make hardcoded assumptions:
+- Predefined folder structures (Inbox, Archive, etc.)
+- Fixed workflows (tag-based, date-based, category-based)
+- Rigid schemas and required fields
+- One-size-fits-all organization paradigms
+
+These assumptions conflict with individual organizational preferences and use cases.
+
+**4. Knowledge Base Maintenance Burden**
+
+As knowledge bases grow, maintenance becomes overwhelming:
+- Indexes (README.md) fall out of sync with actual content
+- Cross-references break when files move or get deleted
+- Directory purposes become unclear over time
+- Orphaned files accumulate without proper categorization
+
+Manual maintenance doesn't scale, leading to gradual knowledge base decay.
+
+#### AkashicRecords Solutions
+
+**1. AI-Native Organization**
+
+Instead of human-driven organization:
+```
+Traditional:
+Human decides → Human organizes → Human maintains
+
+AkashicRecords:
+Human defines rules once (RULE.md) → AI understands rules →
+AI recommends organization → Human confirms → AI maintains
+```
+
+AI reads RULE.md files to understand directory purposes, then autonomously:
+- Analyzes content to determine topic and type
+- Matches content to appropriate directories
+- Recommends placement based on rule matching
+- Executes organization with human confirmation
+
+**2. Workflow Automation via RULE.md**
+
+Define workflows once in natural language, AI executes automatically:
+
+**Your RULE.md says:**
+```markdown
+When Claude detects URLs:
+1. Use WebFetch to retrieve content
+2. Convert HTML to clean markdown
+3. Create directory: Articles/YYYY/MM/YYYY-MM-DD_title/
+4. Save article.md and metadata.yaml
+5. Update README.md
+```
+
+**AI executes exactly as specified** - no coding required, just describe what you want.
+
+This means:
+- Complex workflows become reusable
+- Business logic lives in documentation (RULE.md)
+- Anyone can define custom workflows in plain language
+- Workflows adapt per directory (different RULE.md = different behavior)
+
+**3. Universal Adaptability**
+
+No hardcoded assumptions - Skills adapt to YOUR structure:
+- Read RULE.md to understand what directories are for
+- Execute per your specifications, not predefined logic
+- Work with any organizational paradigm (date-based, topic-based, project-based, etc.)
+- Support custom formats, naming conventions, and workflows
+
+**Same Skills work for**:
+- Academic research (papers with citations)
+- Personal journaling (date-based entries)
+- Project management (specs with frontmatter)
+- Web archival (URL fetching and conversion)
+- Work logs (hierarchical time tracking)
+
+All through different RULE.md files, no code changes needed.
+
+**4. Self-Governing Directories**
+
+Automated maintenance eliminates decay:
+- **Automatic README.md updates**: Every add/update/delete/move operation updates indexes
+- **Dependency tracking**: Skills detect cross-references and warn before breaking them
+- **Governance validation**: `/akashic-maintain` finds and fixes governance violations
+- **Orphan detection**: Identifies files not listed in any README.md
+
+The knowledge base maintains itself through:
+- Continuous compliance checking (RULE.md requirements)
+- Automatic index synchronization (README.md always current)
+- Proactive issue detection and fixing offers
+- Cross-reference integrity maintenance
+
+#### Core Value
+
+AkashicRecords fundamentally shifts knowledge management from **manual organization** to **automated governance**:
+
+> "You define the rules, AI executes them"
+
+Instead of organizing every file manually, you:
+1. **Define rules once** (what is each directory for?)
+2. **Let AI understand** (AI reads RULE.md to comprehend purposes)
+3. **AI recommends** (intelligent classification based on content analysis)
+4. **You confirm** (human-in-the-loop for critical decisions)
+5. **AI maintains** (automatic governance and upkeep)
+
+This creates a **self-maintaining knowledge base** that:
+- Adapts to your organizational preferences
+- Executes your custom workflows automatically
+- Scales without increasing maintenance burden
+- Accumulates knowledge without cognitive overhead
+
+**Result**: Knowledge capture becomes effortless, organization becomes automatic, and maintenance becomes invisible.
 
 ---
 
