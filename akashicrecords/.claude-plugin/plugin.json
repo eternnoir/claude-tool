@@ -1,0 +1,16 @@
+{
+  "name": "akashicrecords",
+  "description": "Generic knowledge management with RULE.md-driven business logic. Provides universal file operations (add, update, delete, move, search) that adapt to any directory structure by reading governance rules.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Frank Wang"
+  },
+  "keywords": [
+    "knowledge-management",
+    "governance",
+    "generic",
+    "rule-driven",
+    "file-operations"
+  ],
+  "license": "MIT"
+}

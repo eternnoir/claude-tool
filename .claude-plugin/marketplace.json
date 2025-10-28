@@ -23,6 +23,19 @@
         "long-term-tasks",
         "project-tracking"
       ]
+    },
+    {
+      "name": "akashicrecords",
+      "source": "./akashicrecords",
+      "description": "Generic knowledge management with RULE.md-driven business logic - universal file operations that adapt to any directory structure",
+      "version": "1.0.0",
+      "keywords": [
+        "knowledge-management",
+        "governance",
+        "generic",
+        "rule-driven",
+        "file-operations"
+      ]
     }
   ]
 }

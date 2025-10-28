@@ -50,6 +50,39 @@ Comprehensive documentation system for complex, multi-session tasks.
 
 ---
 
+### AkashicRecords
+
+**The first AI-native knowledge management system** - designed for AI agents to autonomously understand, organize, and maintain knowledge bases through self-describing directories.
+
+**Why AI-Native?**
+
+Traditional tools expect humans to organize files. AkashicRecords lets AI read your organizational rules and execute complex workflows autonomously:
+
+- 📖 **AI reads RULE.md** to understand "what is this directory for?"
+- 🤖 **AI executes workflows** defined in natural language (e.g., "when URL detected, fetch and archive")
+- 🎯 **AI classifies content** by matching topics to directory purposes
+- ✅ **Human confirms decisions** - AI recommends, you approve
+
+**Features**:
+- 🎯 5 generic Skills (add, update, delete, move, search)
+- 📋 RULE.md-driven execution (business logic from YOUR rules, not hardcoded)
+- 🧠 Smart content classification with user confirmation
+- ✅ Self-governing directories with automatic README.md maintenance
+- 🔧 Universal compatibility - no assumptions about directory structure
+
+**Quick Start**:
+```bash
+/plugin install akashicrecords@claude-tools
+/akashic-init                    # AI scans and understands your structure
+"Save this note about AI"        # AI recommends location, you confirm
+```
+
+**Example**: Your `ReadLater/RULE.md` says "fetch URLs and convert to markdown" → AI reads this → When you share a URL, AI automatically fetches, converts, and archives per your rules.
+
+**Documentation**: See [akashicrecords/README.md](./akashicrecords/README.md)
+
+---
+
 ## Why TEDS?
 
 ### Problems It Solves
@@ -141,16 +174,28 @@ This is particularly valuable for building long-term knowledge management system
 ```
 claude-tools/
 ├── .claude-plugin/
-│   └── marketplace.json        # Marketplace metadata
-├── teds/                        # TEDS Plugin
+│   └── marketplace.json          # Marketplace metadata
+├── teds/                          # TEDS Plugin
 │   ├── .claude-plugin/
 │   │   └── plugin.json
-│   ├── commands/               # 6 slash commands
-│   ├── agents/                 # 5 specialized agents
-│   ├── teds-core-prompt.md    # Core system documentation
-│   └── README.md              # Plugin documentation
+│   ├── commands/                 # 6 slash commands
+│   ├── agents/                   # 5 specialized agents
+│   ├── teds-core-prompt.md      # Core system documentation
+│   └── README.md                # Plugin documentation
+├── akashicrecords/               # AkashicRecords Plugin
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   ├── commands/                 # 2 management commands
+│   ├── agents/                   # 1 governance agent
+│   ├── skills/                   # 5 generic Skills
+│   │   ├── add-content/
+│   │   ├── update-content/
+│   │   ├── delete-content/
+│   │   ├── move-content/
+│   │   └── search-content/
+│   └── README.md                # Plugin documentation
 ├── .gitignore
-└── README.md                   # This file
+└── README.md                     # This file
 ```
 
 ---
