@@ -1,0 +1,22 @@
+{
+  "name": "projectmaster",
+  "description": "Comprehensive software project management system with support for Agile, Scrum, Kanban, and Waterfall methodologies. Manages meetings, sprints, milestones, and project documentation with full AkashicRecords governance integration.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Frank Wang"
+  },
+  "keywords": [
+    "project-management",
+    "agile",
+    "scrum",
+    "kanban",
+    "waterfall",
+    "sprint",
+    "milestone",
+    "meeting",
+    "governance",
+    "documentation",
+    "team-collaboration"
+  ],
+  "license": "MIT"
+}
