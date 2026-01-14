@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Todo Tracker settings - place this file at .claude/todo-settings-local.json",
+
+  "enabled": true,
+
+  "todos_directory": "",
+
+  "tracked_directories": [],
+
+  "patterns": {
+    "request": [
+      "please provide",
+      "please reply",
+      "please confirm",
+      "please send",
+      "need you to",
+      "need your",
+      "could you",
+      "would you",
+      "can you please",
+      "requesting"
+    ],
+    "deadline": [
+      "by EOD",
+      "by end of day",
+      "by tomorrow",
+      "by next week",
+      "deadline",
+      "due by",
+      "due date",
+      "before",
+      "ASAP",
+      "urgent",
+      "urgently",
+      "immediately"
+    ],
+    "action": [
+      "action item",
+      "action required",
+      "follow up",
+      "follow-up",
+      "TODO",
+      "to do",
+      "task:",
+      "next steps"
+    ]
+  },
+
+  "default_priority": "medium",
+
+  "auto_due_date_detection": true,
+
+  "confirmation_required": true
+}

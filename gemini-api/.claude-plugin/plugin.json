@@ -1,0 +1,21 @@
+{
+  "name": "gemini-api",
+  "description": "Google Gemini API integration for text generation, multimodal analysis, image generation (Nano Banana), function calling, search grounding, and embeddings via REST API",
+  "version": "1.0.0",
+  "author": {
+    "name": "Frank Wang"
+  },
+  "keywords": [
+    "gemini",
+    "google",
+    "ai",
+    "text-generation",
+    "multimodal",
+    "image-generation",
+    "nano-banana",
+    "function-calling",
+    "embeddings",
+    "rest-api"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "akashicrecords",
+  "description": "Generic knowledge management with RULE.md-driven business logic. Provides universal file operations (add, update, delete, move, search) that adapt to any directory structure by reading governance rules. Includes automatic todo tracking with hook-based detection.",
+  "version": "1.6.0",
+  "author": {
+    "name": "Frank Wang"
+  },
+  "keywords": [
+    "knowledge-management",
+    "governance",
+    "generic",
+    "rule-driven",
+    "file-operations",
+    "todo-tracking"
+  ],
+  "license": "MIT"
+}
