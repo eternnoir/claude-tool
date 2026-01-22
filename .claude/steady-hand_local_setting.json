@@ -1,0 +1,6 @@
+{
+  "enabled": true,
+  "threshold": 60,
+  "max_tokens": 200000,
+  "prompt": "[System Reminder] Maintain your quality standards. Do not skip validation steps. If remaining context is insufficient to complete the current task with high quality, pause and create a handoff note."
+}

@@ -1,0 +1,19 @@
+{
+  "name": "multi-perspective",
+  "description": "Multi-perspective analysis tool that dynamically generates expert roles to analyze propositions from multiple angles. Supports validation, comprehensive analysis, and debate modes with optional AkashicRecords integration.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Frank Wang"
+  },
+  "keywords": [
+    "analysis",
+    "multi-perspective",
+    "expert-roles",
+    "critical-thinking",
+    "debate",
+    "validation",
+    "proposition-analysis",
+    "blindspot-detection"
+  ],
+  "license": "MIT"
+}

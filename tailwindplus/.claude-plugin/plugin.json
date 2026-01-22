@@ -1,0 +1,17 @@
+{
+  "name": "tailwindplus",
+  "description": "Access TailwindPlus UI component library - search, list, and retrieve code for Marketing, Application UI, and eCommerce components in HTML/React/Vue with Tailwind CSS v3/v4",
+  "version": "2.0.0",
+  "author": {
+    "name": "Frank Wang"
+  },
+  "keywords": [
+    "tailwindcss",
+    "ui-components",
+    "tailwindplus",
+    "react",
+    "vue",
+    "html"
+  ],
+  "license": "MIT"
+}

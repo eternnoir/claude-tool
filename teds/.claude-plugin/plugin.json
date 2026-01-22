@@ -1,0 +1,19 @@
+{
+  "name": "teds-plugin",
+  "version": "1.2.0",
+  "description": "Task Execution Documentation System (TEDS) - Comprehensive documentation for complex, multi-session tasks",
+  "author": {
+    "name": "eternnoir",
+    "email": "eternnoir@gmail.com"
+  },
+  "keywords": [
+    "task-management",
+    "documentation",
+    "long-term-tasks",
+    "project-tracking",
+    "knowledge-management"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/eternnoir/claude-tool",
+  "homepage": "https://github.com/eternnoir/claude-tool#readme"
+}

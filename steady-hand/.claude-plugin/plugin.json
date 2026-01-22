@@ -1,0 +1,16 @@
+{
+  "name": "steady-hand",
+  "description": "Maintains quality standards by injecting reminders when context usage exceeds threshold",
+  "version": "1.1.3",
+  "author": {
+    "name": "Frank Wang"
+  },
+  "keywords": [
+    "context",
+    "quality",
+    "reminder",
+    "hook",
+    "steady"
+  ],
+  "license": "MIT"
+}
