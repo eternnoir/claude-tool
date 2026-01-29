@@ -1,6 +1,6 @@
 {
   "name": "legacybridge-cc-plugins",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "description": "Collection of Claude Code plugins and tools by Frank Wang",
   "owner": {
     "name": "eternnoir",
@@ -134,7 +134,7 @@
       "name": "engram",
       "source": "./engram",
       "description": "Persistent memory system with three-file separation and preset templates for personal assistant, project assistant, and character companion use cases",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "keywords": [
         "memory",
         "persistence",
