@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "preset": "personal-assistant",
+  "files": {
+    "preferences": "memory_preferences.md",
+    "conversations": "memory_conversations.md",
+    "longterm": "memory_longterm.md"
+  },
+  "reload_interval": 10,
+  "language": "en"
+}

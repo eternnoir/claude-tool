@@ -1,0 +1,17 @@
+{
+  "name": "engram",
+  "description": "Persistent memory system with three-file separation and preset templates for personal assistant, project assistant, and character companion use cases",
+  "version": "1.0.0",
+  "author": {
+    "name": "Frank Wang"
+  },
+  "keywords": [
+    "memory",
+    "persistence",
+    "context",
+    "preferences",
+    "conversation-history",
+    "long-term-memory"
+  ],
+  "license": "MIT"
+}
