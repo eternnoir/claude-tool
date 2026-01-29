@@ -33,6 +33,24 @@ Or add to your project's `.claude/settings.json`:
 }
 ```
 
+## Getting Started
+
+After installation, **you must initialize the memory system before first use**. Engram's hook automatically detects whether initialization has been completed and will guide you through the setup process:
+
+1. **Auto-detection**: On your first prompt, the hook detects that `.claude/memory-settings.json` does not exist and triggers the `memory-init` skill
+2. **Choose a preset**: Select `personal-assistant`, `project-assistant`, or `character-companion` based on your use case
+3. **Customize file names** (optional): Keep the defaults or rename the three memory files
+4. **Choose language**: Select the language for hook-injected instructions (`en` or `zh`)
+5. **Done**: The system creates your configuration, memory file templates, and turn counter
+
+All memory features (recall, remember, status) only work after initialization is complete. If you attempt to use them beforehand, the hook will keep prompting you to run `memory-init` first.
+
+You can also trigger initialization manually at any time:
+
+```
+/engram:memory-init
+```
+
 ## Presets
 
 Engram ships with three preset templates optimized for different use cases:
