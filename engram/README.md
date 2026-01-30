@@ -116,7 +116,8 @@ Settings are stored in `.claude/memory-settings.json`:
     "longterm": "memory_longterm.md"
   },
   "reload_interval": 10,
-  "language": "en"
+  "language": "en",
+  "reminder_file": ".claude/memory-reminder.md"
 }
 ```
 
@@ -129,6 +130,22 @@ Settings are stored in `.claude/memory-settings.json`:
 | `files.longterm` | Long-term memory file name | `"memory_longterm.md"` |
 | `reload_interval` | Re-read preferences every N turns | `10` |
 | `language` | Hook instruction language (`en` or `zh`) | `"en"` |
+| `reminder_file` | Path to customizable reminder instructions | `".claude/memory-reminder.md"` |
+
+### Customizing Hook Instructions
+
+The instructions injected on every prompt are stored in `.claude/memory-reminder.md`. You can edit this file to change what Claude receives each turn — adjust wording, add rules, remove triggers, or completely rewrite the instructions.
+
+The file supports these placeholders, which are substituted at runtime:
+
+| Placeholder | Replaced with |
+|-------------|---------------|
+| `{{PREFS_FILE}}` | Preferences file name from settings |
+| `{{CONVOS_FILE}}` | Conversations file name from settings |
+| `{{LONGTERM_FILE}}` | Long-term memory file name from settings |
+| `{{RELOAD_INTERVAL}}` | Reload interval from settings |
+
+If the reminder file does not exist, the hook falls back to built-in default instructions based on the `language` setting.
 
 ## Memory File Formats
 
