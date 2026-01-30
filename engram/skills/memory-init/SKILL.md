@@ -52,7 +52,8 @@ Create `.claude/memory-settings.json` with the chosen settings:
     "longterm": "<longterm-filename>"
   },
   "reload_interval": 10,
-  "language": "<en|zh>"
+  "language": "<en|zh>",
+  "reminder_file": ".claude/memory-reminder.md"
 }
 ```
 
@@ -63,6 +64,17 @@ Copy the template files from the plugin's `templates/presets/<preset>/` director
 Read each template file and write it to the project root with the configured file names.
 
 Replace `{DATE}` placeholders with the current date (YYYY-MM-DD format).
+
+### 5b. Create Reminder File
+
+Copy the reminder template from the plugin's `templates/` directory to `.claude/memory-reminder.md`:
+
+- If language is `zh`: copy from `templates/memory-reminder-zh.md`
+- If language is `en`: copy from `templates/memory-reminder-en.md`
+
+The reminder file uses `{{PREFS_FILE}}`, `{{CONVOS_FILE}}`, `{{LONGTERM_FILE}}`, and `{{RELOAD_INTERVAL}}` placeholders — these are automatically substituted at runtime by the hook script. **Do NOT replace them during init.**
+
+Tell the user: "The reminder instructions are stored in `.claude/memory-reminder.md`. You can edit this file to customize what gets injected each turn."
 
 ### 6. Initialize Counter
 
@@ -95,6 +107,7 @@ Files created:
   - <conversations-file> (conversation history)
   - <longterm-file> (long-term memories)
   - .claude/memory-settings.json (configuration)
+  - .claude/memory-reminder.md (customizable hook instructions)
   - .claude/memory_counter.txt (turn counter)
 
 The memory system is now active. I will automatically:

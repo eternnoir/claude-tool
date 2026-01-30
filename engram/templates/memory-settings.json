@@ -7,5 +7,6 @@
     "longterm": "memory_longterm.md"
   },
   "reload_interval": 10,
-  "language": "en"
+  "language": "en",
+  "reminder_file": ".claude/memory-reminder.md"
 }

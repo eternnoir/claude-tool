@@ -62,8 +62,18 @@ if [ "$COUNTER" -eq 1 ] || [ $((COUNTER % RELOAD_INTERVAL)) -eq 0 ]; then
     RELOAD_HINT="[RELOAD]"
 fi
 
-# ─── Build instructions by language ───
-if [ "$LANG" = "zh" ]; then
+# ─── Build instructions ───
+REMINDER_FILE_SETTING=$(jq -r '.reminder_file // ".claude/memory-reminder.md"' "$SETTINGS_FILE")
+REMINDER_PATH="$PROJECT_DIR/$REMINDER_FILE_SETTING"
+
+if [ -f "$REMINDER_PATH" ]; then
+    # Read from user-customizable reminder file, substitute placeholders
+    INSTRUCTIONS=$(cat "$REMINDER_PATH")
+    INSTRUCTIONS="${INSTRUCTIONS//\{\{PREFS_FILE\}\}/$PREFS_FILE}"
+    INSTRUCTIONS="${INSTRUCTIONS//\{\{CONVOS_FILE\}\}/$CONVOS_FILE}"
+    INSTRUCTIONS="${INSTRUCTIONS//\{\{LONGTERM_FILE\}\}/$LONGTERM_FILE}"
+    INSTRUCTIONS="${INSTRUCTIONS//\{\{RELOAD_INTERVAL\}\}/$RELOAD_INTERVAL}"
+elif [ "$LANG" = "zh" ]; then
     INSTRUCTIONS="記憶系統指令（三檔分離）：
 1. ${PREFS_FILE}（User Preferences）：用 Read tool 直接讀取全檔到 context（turn 1 必讀、每 ${RELOAD_INTERVAL} 輪重讀、更新後下輪重讀）
 2. ${CONVOS_FILE}（Conversation History）：根據話題用 Grep 搜尋相關段落（最新在最前面）
