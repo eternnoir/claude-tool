@@ -23,7 +23,7 @@ You MUST follow ALL of these rules without exception:
 4. **New preference/decision/milestone discovered**: Use the `memory-remember` skill to write to the appropriate file immediately
 5. **Topic relates to past discussions or historical context**: Use the `memory-recall` skill to search memories BEFORE responding
 6. **Conversation ends or reaches a natural summary point**: Use the `memory-remember` skill to save a conversation summary
-7. **Uncertainty about current topic**: If the conversation could possibly relate to past context, you MUST use the `memory-recall` skill to search memories before responding
+{SEARCH_MODE_INSTRUCTION}
 
 ### Hook Signals
 

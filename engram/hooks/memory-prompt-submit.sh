@@ -40,6 +40,29 @@ CONVOS_FILE=$(jq -r '.files.conversations // "memory_conversations.md"' "$SETTIN
 LONGTERM_FILE=$(jq -r '.files.longterm // "memory_longterm.md"' "$SETTINGS_FILE")
 RELOAD_INTERVAL=$(jq -r '.reload_interval // 10' "$SETTINGS_FILE")
 LANG=$(jq -r '.language // "en"' "$SETTINGS_FILE")
+SEARCH_MODE=$(jq -r '.search_mode // ""' "$SETTINGS_FILE")
+
+# Upgrade detection: if search_mode is not set, default to weak and prepare hint
+UPGRADE_HINT=""
+if [ -z "$SEARCH_MODE" ]; then
+    SEARCH_MODE="weak"
+    UPGRADE_HINT="\n[ENGRAM] New: Search Mode available (strong/weak). Use memory-init skill to configure."
+fi
+
+# Build SEARCH_MODE_INSTRUCTION based on mode + language
+if [ "$SEARCH_MODE" = "strong" ]; then
+    if [ "$LANG" = "zh" ]; then
+        SEARCH_MODE_INSTRUCTION="- 強制搜尋：每次回覆前，必須先分析使用者意圖，然後使用 memory-recall skill 搜尋相關記憶。沒有例外 — 永遠先搜尋再回覆。"
+    else
+        SEARCH_MODE_INSTRUCTION="- MANDATORY: Before EVERY response, first analyze the user's intent and use memory-recall skill to search relevant memories. No exceptions — always search first, respond second."
+    fi
+else
+    if [ "$LANG" = "zh" ]; then
+        SEARCH_MODE_INSTRUCTION="- 主動查詢：每次對話如果有可能涉及過去，必須先使用 memory-recall skill 搜尋記憶再回覆"
+    else
+        SEARCH_MODE_INSTRUCTION="- Proactive query: if a conversation could possibly relate to past context, MUST use memory-recall skill to search memories before responding"
+    fi
+fi
 
 # Datetime
 DATETIME=$(date '+%Y/%m/%d %H:%M:%S')
@@ -73,6 +96,7 @@ if [ -f "$REMINDER_PATH" ]; then
     INSTRUCTIONS="${INSTRUCTIONS//\{\{CONVOS_FILE\}\}/$CONVOS_FILE}"
     INSTRUCTIONS="${INSTRUCTIONS//\{\{LONGTERM_FILE\}\}/$LONGTERM_FILE}"
     INSTRUCTIONS="${INSTRUCTIONS//\{\{RELOAD_INTERVAL\}\}/$RELOAD_INTERVAL}"
+    INSTRUCTIONS="${INSTRUCTIONS//\{\{SEARCH_MODE_INSTRUCTION\}\}/$SEARCH_MODE_INSTRUCTION}"
 elif [ "$LANG" = "zh" ]; then
     INSTRUCTIONS="記憶系統指令（三檔分離）：
 1. ${PREFS_FILE}（User Preferences）：用 Read tool 直接讀取全檔到 context（turn 1 必讀、每 ${RELOAD_INTERVAL} 輪重讀、更新後下輪重讀）
@@ -82,7 +106,7 @@ elif [ "$LANG" = "zh" ]; then
 - 發現新偏好/決策/里程碑 → 使用 memory-remember skill 寫入對應檔案
 - 話題涉及過去討論/歷史上下文 → 使用 memory-recall skill 搜尋記憶
 - 對話結束或自然總結點 → 使用 memory-remember skill 儲存對話摘要
-- 主動查詢：對當前話題不確定時，必須先查詢記憶檔案再回覆"
+$SEARCH_MODE_INSTRUCTION"
 else
     INSTRUCTIONS="Memory System Instructions (Three-File Separation):
 1. ${PREFS_FILE} (User Preferences): Read full file into context via Read tool (MUST read on turn 1, re-read every ${RELOAD_INTERVAL} turns, re-read after updates)
@@ -92,13 +116,13 @@ Auto-trigger reminders:
 - Discover new preferences/decisions/milestones → use memory-remember skill to write to appropriate file
 - Topic relates to past discussions/historical context → use memory-recall skill to search memories
 - Conversation ends or natural summary point → use memory-remember skill to save conversation summary
-- Proactive query: when uncertain about current topic, MUST search memory files before responding"
+$SEARCH_MODE_INSTRUCTION"
 fi
 
 # ─── Output JSON ───
 # Use jq to safely encode the context string
-CONTEXT=$(printf "\n\n[ENGRAM MEMORY SYSTEM]\nDatetime: %s (%s)\nConversation Turn: %s %s\nPreset: %s\n\n%s" \
-    "$DATETIME" "$WEEKDAY" "$COUNTER" "$RELOAD_HINT" "$PRESET" "$INSTRUCTIONS")
+CONTEXT=$(printf "\n\n[ENGRAM MEMORY SYSTEM]\nDatetime: %s (%s)\nConversation Turn: %s %s\nPreset: %s\n\n%s%b" \
+    "$DATETIME" "$WEEKDAY" "$COUNTER" "$RELOAD_HINT" "$PRESET" "$INSTRUCTIONS" "$UPGRADE_HINT")
 
 jq -n --arg ctx "$CONTEXT" \
     '{"hookSpecificOutput":{"hookEventName":"UserPromptSubmit","additionalContext":$ctx}}'

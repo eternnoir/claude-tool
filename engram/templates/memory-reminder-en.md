@@ -9,4 +9,4 @@ Auto-trigger reminders:
 - Discover new preferences/decisions/milestones → use memory-remember skill to write to appropriate file
 - Topic relates to past discussions/historical context → use memory-recall skill to search memories
 - Conversation ends or natural summary point → use memory-remember skill to save conversation summary
-- Proactive query: if a conversation could possibly relate to past context, MUST use memory-recall skill to search memories before responding
+{{SEARCH_MODE_INSTRUCTION}}

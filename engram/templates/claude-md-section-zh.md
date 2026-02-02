@@ -23,7 +23,7 @@
 4. **發現新偏好/決策/里程碑**：立即使用 `memory-remember` skill 寫入對應檔案
 5. **話題涉及過去討論或歷史上下文**：必須先使用 `memory-recall` skill 搜尋記憶再回覆
 6. **對話結束或到達自然總結點**：使用 `memory-remember` skill 儲存對話摘要
-7. **對當前話題不確定**：如果對話有可能涉及過去的上下文，必須先使用 `memory-recall` skill 搜尋記憶再回覆
+{SEARCH_MODE_INSTRUCTION}
 
 ### Hook 信號
 

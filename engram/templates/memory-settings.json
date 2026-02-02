@@ -8,6 +8,6 @@
   },
   "reload_interval": 10,
   "language": "en",
-  "reminder_file": ".claude/memory-reminder.md",
-  "claude_md_integrated": true
+  "search_mode": "weak",
+  "reminder_file": ".claude/memory-reminder.md"
 }

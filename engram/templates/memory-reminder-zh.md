@@ -9,4 +9,4 @@
 - 發現新偏好/決策/里程碑 → 使用 memory-remember skill 寫入對應檔案
 - 話題涉及過去討論/歷史上下文 → 使用 memory-recall skill 搜尋記憶
 - 對話結束或自然總結點 → 使用 memory-remember skill 儲存對話摘要
-- 主動查詢：每次對話如果有可能涉及過去，必須先使用 memory-recall skill 搜尋記憶再回覆
+{{SEARCH_MODE_INSTRUCTION}}

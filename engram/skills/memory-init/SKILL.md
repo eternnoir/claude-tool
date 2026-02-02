@@ -39,6 +39,11 @@ memory_longterm.md       (Long-term memories)
 - `en` — English instructions injected by hook (default)
 - `zh` — Chinese instructions injected by hook
 
+### 3.5 Ask Search Mode
+
+- `strong` — 每次回覆前都先搜尋記憶 / Search memories before EVERY response (no exceptions)
+- `weak` — 僅在判斷需要時搜尋 / Only search when context suggests it's relevant (default)
+
 ### 4. Create Configuration
 
 Create `.claude/memory-settings.json` with the chosen settings:
@@ -54,8 +59,8 @@ Create `.claude/memory-settings.json` with the chosen settings:
   },
   "reload_interval": 10,
   "language": "<en|zh>",
-  "reminder_file": ".claude/memory-reminder.md",
-  "claude_md_integrated": true
+  "search_mode": "<strong|weak>",
+  "reminder_file": ".claude/memory-reminder.md"
 }
 ```
 
@@ -74,7 +79,7 @@ Copy the reminder template from the plugin's `templates/` directory to `.claude/
 - If language is `zh`: copy from `templates/memory-reminder-zh.md`
 - If language is `en`: copy from `templates/memory-reminder-en.md`
 
-The reminder file uses `{{PREFS_FILE}}`, `{{CONVOS_FILE}}`, `{{LONGTERM_FILE}}`, and `{{RELOAD_INTERVAL}}` placeholders — these are automatically substituted at runtime by the hook script. **Do NOT replace them during init.**
+The reminder file uses `{{PREFS_FILE}}`, `{{CONVOS_FILE}}`, `{{LONGTERM_FILE}}`, `{{RELOAD_INTERVAL}}`, and `{{SEARCH_MODE_INSTRUCTION}}` placeholders — these are automatically substituted at runtime by the hook script. **Do NOT replace them during init.**
 
 Tell the user: "The reminder instructions are stored in `.claude/memory-reminder.md`. This is the legacy fallback — the main instructions are now in CLAUDE.md."
 
@@ -93,6 +98,11 @@ Replace the following placeholders with the actual configured values:
 - `{RELOAD_INTERVAL}` → reload interval number
 - `{PRESET}` → chosen preset name
 - `{VERSION}` → plugin version from `.claude-plugin/plugin.json`
+- `{SEARCH_MODE_INSTRUCTION}` → resolved based on search_mode and language:
+  - **strong + en**: `7. **MANDATORY pre-response search**: Before EVERY response, first analyze the user's intent and use the \`memory-recall\` skill to search memories. No exceptions — always search first, respond second.`
+  - **weak + en**: `7. **Uncertainty about current topic**: If the conversation could possibly relate to past context, you MUST use the \`memory-recall\` skill to search memories before responding`
+  - **strong + zh**: `7. **強制預搜尋**：每次回覆前，必須先分析使用者意圖，然後使用 \`memory-recall\` skill 搜尋記憶。沒有例外 — 永遠先搜尋再回覆。`
+  - **weak + zh**: `7. **對當前話題不確定**：如果對話有可能涉及過去的上下文，必須先使用 \`memory-recall\` skill 搜尋記憶再回覆`
 
 Then apply to `CLAUDE.md` in the project root:
 
@@ -117,6 +127,16 @@ If yes, guide through customization — adding new sections, renaming existing o
 Ask the user: "Would you like to fill in your initial preferences now?"
 
 If yes, walk through each section and populate the preferences file with the user's answers.
+
+### 8.5 Upgrade Path (Re-running Init)
+
+If `.claude/memory-settings.json` already exists but `search_mode` is not set:
+
+1. Skip steps 1–3 (preset, file names, language are already configured)
+2. Ask: "search_mode is not configured yet — would you like to enable strong search mode?"
+3. Update `memory-settings.json` with the chosen `search_mode` value
+4. Re-generate the reminder file (Step 5b) and CLAUDE.md section (Step 5c) with the new search mode instruction
+5. Do NOT reset other settings (preset, files, language, etc.)
 
 ### 9. Output Summary
 

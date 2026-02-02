@@ -134,7 +134,7 @@
       "name": "engram",
       "source": "./engram",
       "description": "Persistent memory system with three-file separation and preset templates for personal assistant, project assistant, character companion, and pair programmer use cases",
-      "version": "1.3.0",
+      "version": "1.4.0",
       "keywords": [
         "memory",
         "persistence",
