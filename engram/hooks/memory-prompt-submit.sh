@@ -59,7 +59,7 @@ echo "$COUNTER" > "$COUNTER_FILE"
 # Reload flag
 RELOAD_HINT=""
 if [ "$COUNTER" -eq 1 ] || [ $((COUNTER % RELOAD_INTERVAL)) -eq 0 ]; then
-    RELOAD_HINT="[RELOAD]"
+    RELOAD_HINT="[ENGRAM RELOAD]"
 fi
 
 # ─── Build instructions ───

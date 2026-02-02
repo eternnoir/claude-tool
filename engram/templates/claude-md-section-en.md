@@ -18,7 +18,7 @@ IMPORTANT: You MUST follow these memory instructions throughout every conversati
 You MUST follow ALL of these rules without exception:
 
 1. **Turn 1**: ALWAYS read `{PREFS_FILE}` in full using the Read tool before doing anything else
-2. **Every {RELOAD_INTERVAL} turns**: Re-read `{PREFS_FILE}` in full (the hook shows `[RELOAD]` as a reminder)
+2. **Every {RELOAD_INTERVAL} turns**: Re-read `{PREFS_FILE}` in full (the hook shows `[ENGRAM RELOAD]` as a reminder)
 3. **After updating preferences**: Re-read `{PREFS_FILE}` on the very next turn
 4. **New preference/decision/milestone discovered**: Use the `memory-remember` skill to write to the appropriate file immediately
 5. **Topic relates to past discussions or historical context**: Use the `memory-recall` skill to search memories BEFORE responding

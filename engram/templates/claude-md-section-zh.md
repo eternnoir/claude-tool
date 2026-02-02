@@ -18,7 +18,7 @@
 你必須無例外地遵守以下所有規則：
 
 1. **第 1 輪**：必須使用 Read tool 完整讀取 `{PREFS_FILE}`，在做任何其他事情之前
-2. **每 {RELOAD_INTERVAL} 輪**：重新完整讀取 `{PREFS_FILE}`（hook 會顯示 `[RELOAD]` 作為提醒）
+2. **每 {RELOAD_INTERVAL} 輪**：重新完整讀取 `{PREFS_FILE}`（hook 會顯示 `[ENGRAM RELOAD]` 作為提醒）
 3. **更新偏好後**：在下一輪立即重新讀取 `{PREFS_FILE}`
 4. **發現新偏好/決策/里程碑**：立即使用 `memory-remember` skill 寫入對應檔案
 5. **話題涉及過去討論或歷史上下文**：必須先使用 `memory-recall` skill 搜尋記憶再回覆
