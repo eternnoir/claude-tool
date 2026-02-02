@@ -20,6 +20,7 @@ Ask the user which preset they want:
 - **personal-assistant** — Daily life, preferences, habits, personal interactions
 - **project-assistant** — Codebase, architecture, tech decisions, team workflow
 - **character-companion** — Persona, relationship, story progression, emotional bonds
+- **pair-programmer** — AI self-learning, mistake tracking, user preference rules, collaboration patterns
 
 Or offer **custom** configuration.
 
@@ -53,7 +54,8 @@ Create `.claude/memory-settings.json` with the chosen settings:
   },
   "reload_interval": 10,
   "language": "<en|zh>",
-  "reminder_file": ".claude/memory-reminder.md"
+  "reminder_file": ".claude/memory-reminder.md",
+  "claude_md_integrated": true
 }
 ```
 
@@ -74,7 +76,31 @@ Copy the reminder template from the plugin's `templates/` directory to `.claude/
 
 The reminder file uses `{{PREFS_FILE}}`, `{{CONVOS_FILE}}`, `{{LONGTERM_FILE}}`, and `{{RELOAD_INTERVAL}}` placeholders — these are automatically substituted at runtime by the hook script. **Do NOT replace them during init.**
 
-Tell the user: "The reminder instructions are stored in `.claude/memory-reminder.md`. You can edit this file to customize what gets injected each turn."
+Tell the user: "The reminder instructions are stored in `.claude/memory-reminder.md`. This is the legacy fallback — the main instructions are now in CLAUDE.md."
+
+### 5c. Append Engram Section to CLAUDE.md
+
+Read the CLAUDE.md section template from the plugin's `templates/` directory:
+
+- If language is `zh`: read from `templates/claude-md-section-zh.md`
+- If language is `en`: read from `templates/claude-md-section-en.md`
+
+Replace the following placeholders with the actual configured values:
+
+- `{PREFS_FILE}` → preferences file name
+- `{CONVOS_FILE}` → conversations file name
+- `{LONGTERM_FILE}` → longterm file name
+- `{RELOAD_INTERVAL}` → reload interval number
+- `{PRESET}` → chosen preset name
+- `{VERSION}` → plugin version from `.claude-plugin/plugin.json`
+
+Then apply to `CLAUDE.md` in the project root:
+
+1. **If CLAUDE.md exists and contains `<!-- ENGRAM:START -->`**: Replace everything between `<!-- ENGRAM:START -->` and `<!-- ENGRAM:END -->` (inclusive) with the new resolved content
+2. **If CLAUDE.md exists but has no markers**: Append the resolved content to the end of the file (with a blank line separator)
+3. **If CLAUDE.md does not exist**: Create a new CLAUDE.md with only the resolved content
+
+Tell the user: "Memory instructions have been added to CLAUDE.md for high-priority instruction following. The hook will now only inject lightweight datetime/turn signals."
 
 ### 6. Initialize Counter
 
@@ -102,13 +128,14 @@ Engram Memory System Initialized!
 Preset: <preset>
 Language: <language>
 
-Files created:
+Files created/updated:
   - <preferences-file> (preferences)
   - <conversations-file> (conversation history)
   - <longterm-file> (long-term memories)
   - .claude/memory-settings.json (configuration)
-  - .claude/memory-reminder.md (customizable hook instructions)
+  - .claude/memory-reminder.md (legacy hook instructions)
   - .claude/memory_counter.txt (turn counter)
+  - CLAUDE.md (memory instructions — high priority)
 
 The memory system is now active. I will automatically:
   - Load your preferences on turn 1 and every N turns

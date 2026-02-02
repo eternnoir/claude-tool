@@ -38,7 +38,7 @@ Or add to your project's `.claude/settings.json`:
 After installation, **you must initialize the memory system before first use**. Engram's hook automatically detects whether initialization has been completed and will guide you through the setup process:
 
 1. **Auto-detection**: On your first prompt, the hook detects that `.claude/memory-settings.json` does not exist and triggers the `memory-init` skill
-2. **Choose a preset**: Select `personal-assistant`, `project-assistant`, or `character-companion` based on your use case
+2. **Choose a preset**: Select `personal-assistant`, `project-assistant`, `character-companion`, or `pair-programmer` based on your use case
 3. **Customize file names** (optional): Keep the defaults or rename the three memory files
 4. **Choose language**: Select the language for hook-injected instructions (`en` or `zh`)
 5. **Done**: The system creates your configuration, memory file templates, and turn counter
@@ -53,7 +53,7 @@ You can also trigger initialization manually at any time:
 
 ## Presets
 
-Engram ships with three preset templates optimized for different use cases:
+Engram ships with four preset templates optimized for different use cases:
 
 ### Personal Assistant
 
@@ -78,6 +78,14 @@ For persona-based interactions, relationship development, and story progression.
 - **Preferences**: User info, interaction preferences, character persona, relationship framework
 - **Conversations**: Emotional interactions, story progression, relationship moments
 - **Long-term**: Relationship milestones, shared experiences, character development
+
+### Pair Programmer
+
+For AI self-improvement through tracking corrections, user preferences about AI behavior, and collaboration patterns.
+
+- **Preferences**: AI behavior config, user working style, active always/never rules
+- **Conversations**: Corrections received, patterns observed, rules discovered, friction points
+- **Long-term**: Mistake log, user preference rules, collaboration patterns, growth log
 
 ## How It Works
 
