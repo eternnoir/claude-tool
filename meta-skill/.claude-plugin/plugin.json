@@ -1,0 +1,17 @@
+{
+  "name": "meta-skill",
+  "description": "Dynamic skill library that loads skills on-demand from SKILLUSE.md instead of at session startup. Supports auto-matching user intent to skills and dynamic skill management (add, remove, edit).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Frank Wang"
+  },
+  "keywords": [
+    "skill-management",
+    "dynamic-loading",
+    "skill-library",
+    "on-demand",
+    "meta-skill",
+    "skill-router"
+  ],
+  "license": "MIT"
+}
