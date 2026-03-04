@@ -28,4 +28,7 @@ You MUST follow ALL of these rules without exception:
 ### Hook Signals
 
 When it is time to re-read preferences, the Engram hook injects `[ENGRAM RELOAD]`. When you see this signal, you MUST read `{PREFS_FILE}` in full before doing anything else. If no hook signal is present, continue following the rules above based on context.
+
+## Memory Preferences
+@{PREFS_FILE}
 <!-- ENGRAM:END -->

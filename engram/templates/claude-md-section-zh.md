@@ -28,4 +28,7 @@
 ### Hook 信號
 
 需要重讀偏好時，Engram hook 會注入 `[ENGRAM RELOAD]`。當你看到這個信號時，必須完整讀取 `{PREFS_FILE}` 後才能做任何其他事。如果沒有 hook 信號，則根據上述規則依上下文判斷。
+
+## 記憶偏好
+@{PREFS_FILE}
 <!-- ENGRAM:END -->
