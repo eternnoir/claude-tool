@@ -1,0 +1,19 @@
+{
+  "name": "build-verify-loop",
+  "description": "Self-iterating autonomous orchestration loop. The main agent spawns isolated Implementor and Critic subagents in rounds until the artifact converges, an iteration cap is hit, or human escalation is needed. Domain-agnostic — code, docs, plans, designs, copy, specs. Alias: bvl.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Frank Wang"
+  },
+  "keywords": [
+    "orchestration",
+    "autonomous",
+    "self-iterating",
+    "build-verify",
+    "implementor-critic",
+    "subagent",
+    "iterative",
+    "bvl"
+  ],
+  "license": "MIT"
+}

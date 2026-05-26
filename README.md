@@ -1,6 +1,6 @@
 # Claude Tools
 
-A curated collection of 10 professional-grade Claude Code plugins for enhancing AI-assisted workflows.
+A curated collection of 11 professional-grade Claude Code plugins for enhancing AI-assisted workflows.
 
 ---
 
@@ -27,6 +27,7 @@ claude
 /plugin install steady-hand@legacybridge-cc-plugins
 /plugin install engram@legacybridge-cc-plugins
 /plugin install meta-skill@legacybridge-cc-plugins
+/plugin install build-verify-loop@legacybridge-cc-plugins
 
 # Or browse and install interactively
 /plugin
@@ -48,6 +49,7 @@ claude
 | **Steady-Hand** | Context usage monitoring & quality reminders | 1.1.3 |
 | **Engram** | Persistent memory system across sessions | 2.0.0 |
 | **Meta-Skill** | Dynamic on-demand skill loading | 1.0.0 |
+| **Build-Verify Loop** | Self-iterating Implementor/Critic orchestration | 1.0.0 |
 
 ---
 
@@ -260,6 +262,28 @@ Dynamic skill library that loads skills on-demand from `SKILLUSE.md` instead of 
 
 ---
 
+### Build-Verify Loop
+
+Self-iterating autonomous orchestration loop. The main agent acts as a pure orchestrator and spawns isolated Implementor and Critic subagents in rounds until the artifact converges, an iteration cap is hit, or escalation is needed.
+
+**Key Features**:
+- Domain-agnostic — code, docs, plans, designs, copy, specs
+- Verbatim finding pass between subagents (no orchestrator filter / paraphrase)
+- Explicit exit conditions: convergence, iteration cap, blocked, stalled, disputed
+- Short alias `bvl` for fast triggering
+
+**Quick Start**:
+```bash
+/plugin install build-verify-loop@legacybridge-cc-plugins
+/build-verify-loop "Refactor module X to satisfy these AC..."
+# or
+/bvl "Tighten the executive summary against these AC..."
+```
+
+**Documentation**: [build-verify-loop/README.md](./build-verify-loop/README.md)
+
+---
+
 ## Philosophy & Design
 
 ### RULE.md-Driven Architecture
@@ -326,7 +350,8 @@ claude-tools/
 ├── tailwindplus/                 # TailwindPlus Plugin
 ├── steady-hand/                  # Steady-Hand Plugin
 ├── engram/                       # Engram Plugin
-└── meta-skill/                   # Meta-Skill Plugin
+├── meta-skill/                   # Meta-Skill Plugin
+└── build-verify-loop/            # Build-Verify Loop Plugin
 ```
 
 ---

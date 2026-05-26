@@ -1,6 +1,6 @@
 {
   "name": "legacybridge-cc-plugins",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "description": "Collection of Claude Code plugins and tools by Frank Wang",
   "owner": {
     "name": "eternnoir",
@@ -158,6 +158,22 @@
         "on-demand",
         "meta-skill",
         "skill-router"
+      ]
+    },
+    {
+      "name": "build-verify-loop",
+      "source": "./build-verify-loop",
+      "description": "Self-iterating autonomous orchestration loop. Main agent spawns isolated Implementor and Critic subagents in rounds until the artifact converges, an iteration cap is hit, or escalation is needed. Domain-agnostic. Alias: bvl.",
+      "version": "1.0.0",
+      "keywords": [
+        "orchestration",
+        "autonomous",
+        "self-iterating",
+        "build-verify",
+        "implementor-critic",
+        "subagent",
+        "iterative",
+        "bvl"
       ]
     }
   ]
